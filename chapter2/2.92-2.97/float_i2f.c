@@ -13,7 +13,8 @@ float_bits float2bits(float f) {
 }
 
 float_bits float_i2f(int i) {
-  if ( i == 0) {
+  // Zero
+  if (i == 0) {
       return 0;
   }
 
@@ -22,12 +23,12 @@ float_bits float_i2f(int i) {
 
   unsigned frac = i;
 
-  // negative value
+  // convert negative value
   if (sign) {
       frac = 0x80000000 - (frac & 0x7FFFFFFF);
   }
 
-  // calculate leading 0s
+  // calculate leading 0s, therefore we can get the e.
   unsigned e = 32;
   unsigned first_bit = frac & 0x80000000;
   while (!first_bit && e > 0) {
@@ -35,20 +36,16 @@ float_bits float_i2f(int i) {
     frac <<= 1;
     first_bit = frac & 0x80000000;
   }
+
+  // make the leading 1 implicated.
   --e;
   frac <<= 1;
 
   // rounding
   unsigned validate_frac = frac >> 9;
   unsigned rounded_frac = frac & 0x1FF;
-  if (rounded_frac == 0x100) {
-    unsigned least_validate_bit = validate_frac & 1;
-    validate_frac = (validate_frac | 0x00800000) + least_validate_bit;
-    if (validate_frac & 0x01000000) {
-      validate_frac >>= 1;
-      ++e;
-    }
-  } else if (rounded_frac > 0x100) {
+  unsigned least_validate_bit = validate_frac & 1;
+  if (rounded_frac > 0x100 || (rounded_frac == 0x100 && least_validate_bit)) {
     validate_frac = (validate_frac | 0x00800000) + 1;
     if (validate_frac & 0x01000000) {
       validate_frac >>= 1;
