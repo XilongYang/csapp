@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * Xilong Yang
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -242,10 +242,10 @@ int isLessOrEqual(int x, int y) {
 
   // Compare x and y.
   // For both positive number and negative number, the number which 
-  // contains the most significant bit will be the greater one.
+  // contains the most significant 1 will be the greater one.
   // Get the different bits between x and y.
   int compare = x ^ y;
-  // Transform the compare result to the form '00..011..1', which means 
+  // Transfer the compare result to the form '00..011..1', which means 
   // all of the bits in the right of the most significant bit should set to 1.
   compare = compare | (compare >> 1);
   compare = compare | (compare >> 2);
@@ -305,7 +305,58 @@ int logicalNeg(int x) {
  *  Rating: 4
  */
 int howManyBits(int x) {
-  return 0;
+  int mask_2bit = 0x55;
+  int mask_4bit = 0x33;
+  int mask_8bit = 0x0f;
+  int mask_16bit = 0xff;
+  int mask_32bit = 0xff;
+
+  // Inverse negative
+  x = (x >> 31) ^ x;
+
+  // Set the bits in the right of most significant 1 to 1.
+  x |= x >> 1;
+  x |= x >> 2;
+  x |= x >> 4;
+  x |= x >> 8;
+  x |= x >> 16;
+
+  // Count 1s
+  // Generate a 2 bit mask 0x55555555(0101....)
+  mask_2bit += mask_2bit << 8;
+  mask_2bit += mask_2bit << 16;
+
+  // Group each 2 bits to present the sum of 1s in those bits.
+  x = (x & mask_2bit) + ((x >> 1) & mask_2bit);
+
+  // Generate a 4 bit mask 0x33333333(00110011....)
+  mask_4bit += mask_4bit << 8;
+  mask_4bit += mask_4bit << 16;
+
+  // Group each 4 bits to present the sum of 1s in those bits.
+  x = (x & mask_4bit) + ((x >> 2) & mask_4bit);
+
+  // Generate a 8 bit mask 0x0f0f0f0f(0000111100001111....)
+  mask_8bit += mask_8bit << 8;
+  mask_8bit += mask_8bit << 16;
+
+  // Group each 8 bits to present the sum of 1s in those bits.
+  x = (x & mask_8bit) + ((x >> 4) & mask_8bit);
+
+  // Generate a 16 bit mask 0x00ff00ff(00000000111111110000000011111111)
+  mask_16bit += mask_16bit << 16;
+
+  // Group each 16 bits to present the sum of 1s in those bits.
+  x = (x & mask_16bit) + ((x >> 8) & mask_16bit);
+
+  // Generate a 32 bit mask 0x00ff00ff(00000000000000001111111111111111)
+  mask_32bit += mask_32bit << 8;
+
+  // Group each 32 bits to present the sum of 1s in those bits.
+  x = (x & mask_32bit) + ((x >> 16) & mask_32bit);
+
+  // Minimum bits to present the number should be numbers of 1s + 1.
+  return x + 1;
 }
 //float
 /* 
@@ -320,7 +371,24 @@ int howManyBits(int x) {
  *   Rating: 4
  */
 unsigned floatScale2(unsigned uf) {
-  return 2;
+  unsigned sign = uf >> 31;
+  unsigned exp = (uf >> 23) & 0xFF;
+  unsigned frac = uf & 0x007FFFFF;
+
+  if (exp == 0xFF) {
+    // NaN, Inf
+    return uf;
+  } else if (exp == 0 && frac != 0) {
+    // Denormalized.
+    exp = frac >> 22 ;
+    frac = (frac << 1) & 0x007FFFFF;
+  } else if (exp != 0) {
+    // Normalized
+    exp = (exp + 1) & 0xFF;
+    frac = (exp == 0xFF) ? 0 : frac;
+  }
+
+  return sign << 31 | exp << 23 | frac;
 }
 /* 
  * floatFloat2Int - Return bit-level equivalent of expression (int) f
@@ -335,7 +403,37 @@ unsigned floatScale2(unsigned uf) {
  *   Rating: 4
  */
 int floatFloat2Int(unsigned uf) {
-  return 2;
+  unsigned sign = uf >> 31;
+  unsigned exp = (uf >> 23) & 0xFF;
+  unsigned frac = uf & 0x007FFFFF;
+
+  int result = 0x80000000;
+
+  if (exp == 0xFF) {
+    // NaN, Inf
+    return 0x80000000;
+  } else if (exp == 0) {
+    // Denormalized.
+    return 0;
+  } else if (exp != 0) {
+    // Normalized
+    int bias = 127;
+    int e = exp - bias;
+    if (e < 0) {
+        return 0;
+    } else if (e >= 31) {
+        return 0x80000000;
+    }
+    frac |= 0x00800000;
+    result = e > 23 ? (frac << (e - 23)) : (frac >> (23 - e));
+  }
+
+  // Negative value
+  if (sign) {
+    result = (0x80000000 - result) | 0x80000000;
+  }
+
+  return result;
 }
 /* 
  * floatPower2 - Return bit-level equivalent of the expression 2.0^x
@@ -351,5 +449,13 @@ int floatFloat2Int(unsigned uf) {
  *   Rating: 4
  */
 unsigned floatPower2(int x) {
-    return 2;
+    unsigned sign = 0;
+    unsigned exp = 127 + x;
+    unsigned frac = 0;
+    if (exp >= 0xFF) {
+      return 0x7f800000;
+    } else if (exp < 0) {
+      return 0;
+    }
+    return sign << 31 | exp << 23 | frac;
 }
