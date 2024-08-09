@@ -175,11 +175,11 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  int x1 = x & (x >> 16);
-  int x2 = x1 & (x1 >> 8);
-  int x3 = x2 & (x2 >> 4);
-  int x4 = x3 & (x3 >> 2);
-  return (x4 >> 1) & 1;
+  x = x & (x >> 16);
+  x = x & (x >> 8);
+  x = x & (x >> 4);
+  x = x & (x >> 2);
+  return (x >> 1) & 1;
 }
 /* 
  * negate - return -x 
@@ -229,7 +229,51 @@ int conditional(int x, int y, int z) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  return 2;
+  // Check the sign bits.
+  // x <= y is possible when any of following condition is satisfied:
+  // 1. The 2 sign bits of x and y are same
+  // 2. The sign bits are not same but the x's sign bit is set to 1 
+  //    (which means x is negative and y is positive).
+  // If any of those condition is satisfied, the sign_check will be set to 0.
+  int sign_x = (x >> 31) & 1;
+  int sign_y = (y >> 31) & 1;
+  int diff_sign = sign_x ^ sign_y;
+  int sign_check = diff_sign & (!sign_x);
+
+  // Compare x and y.
+  // For both positive number and negative number, the number which 
+  // contains the most significant bit will be the greater one.
+  // Get the different bits between x and y.
+  int compare = x ^ y;
+  // Transform the compare result to the form '00..011..1', which means 
+  // all of the bits in the right of the most significant bit should set to 1.
+  compare = compare | (compare >> 1);
+  compare = compare | (compare >> 2);
+  compare = compare | (compare >> 4);
+  compare = compare | (compare >> 8);
+  compare = compare | (compare >> 16);
+  // Erase all but the most significant bit.
+  // For example, consider the formalized number 00001111, there are
+  //   (compare >> 1): 00000111
+  //   (compare &  1): 1
+  //   (compare >> 1) + (compare & 1): 00001000
+  // There are two special cases:
+  // 1. When x == y, compare will be 0 and the result of the expression (compare & 1) will also be 0.
+  //    Thus the result of the expression (compare >> 1) + (compare & 1) will be 0.
+  //
+  // 2. When the sign bit is difference, the result of the express (compare >> 1) will be 0xFFFFFFFFFFFFFFFF.
+  //    Thus the result of the expression (compare >> 1) + (compare & 1) will be 0.
+  //    That is, the expression is invalid in this case, but at least it will not interference the sign check.
+  //    So it still works.
+  compare = (compare >> 1) + (compare & 1);
+  // If the most significant bit is contained by x, result will be 0.
+  // Otherwise it will be 1.
+  compare = compare & x;
+
+  // The x <= y if and only if
+  // the most significant different bit is contained by x
+  // and the sign_check is passed.
+  return !(compare + sign_check);
 }
 //4
 /* 
@@ -241,7 +285,12 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4 
  */
 int logicalNeg(int x) {
-  return 2;
+  x = (x >> 16) | x;
+  x = (x >> 8) | x;
+  x = (x >> 4) | x;
+  x = (x >> 2) | x;
+  x = (x >> 1) | x;
+  return ~x & 1;
 }
 /* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
