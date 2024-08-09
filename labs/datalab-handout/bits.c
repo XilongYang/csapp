@@ -449,13 +449,16 @@ int floatFloat2Int(unsigned uf) {
  *   Rating: 4
  */
 unsigned floatPower2(int x) {
-    unsigned sign = 0;
-    unsigned exp = 127 + x;
+    unsigned exp = 0;
     unsigned frac = 0;
-    if (exp >= 0xFF) {
+    if (x > 127) {
       return 0x7f800000;
-    } else if (exp < 0) {
+    } else if (x < -149) {
       return 0;
+    } else if (x > -127) {
+      exp = x + 127;
+    } else {
+      frac = 1 << (23 - (-126 - x));
     }
-    return sign << 31 | exp << 23 | frac;
+    return exp << 23 | frac;
 }
