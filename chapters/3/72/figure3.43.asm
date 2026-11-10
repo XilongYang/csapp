@@ -7,11 +7,17 @@ Only portions of code shown
 ; 5 2065 22+8n = 62 -> 48; 2017 2024 1  7
 ; 6 2064 22+8n = 70 -> 64; 2000 2000 16 0
 
+; 22 = 7 + 15
+; Rounding down to a multiple of 16 wastes up to 15 bytes.
+;   Alignment happens BEFORE the stack allocation, so the smaller the rounded value, the smaller the allocated space.
+; Rounding up to a multiple of 8 wastes up to 7 bytes.
+;   Alignment happens AFTER the stack allocation, so the larger the rounded value, the smaller the allocated space.
+
 vframe:
     pushq   %rbp                    Save old %rbp
     movq    %rsp, %rbp              Set frame pointer
     subq    $16, %rsp               Allocate space for i (%rsp = s1)
-    leaq    22(,%rdi,8), %rax       ;22 + 8n 
+    leaq    22(,%rdi,8), %rax       ;22 + 8n
     andq    $-16, %rax              ;-16:1...11110000; 22+8n round down to 16
     subq    %rax, %rsp              Allocate space for array p (%rsp = s2)
     leaq    7(%rsp), %rax           ; rsp + 7
