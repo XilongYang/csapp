@@ -20,6 +20,6 @@ union ele {
  * 16
  */
 
-/* C. see 70.asm
+/* C. see 70.s
  * up->x = *(up->next->p) - up->next->y
  */
