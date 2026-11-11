@@ -1,0 +1,47 @@
+read_six_numbers:
+   0x000000000040145c <+0>:	    sub    $0x18,%rsp                      ; 24bytes(4x6)
+   0x0000000000401460 <+4>:	    mov    %rsi,%rdx                       ; rsi -> rdx       3rd arg rsi
+   0x0000000000401463 <+7>:	    lea    0x4(%rsi),%rcx                  ; rsi + 4 -> rcx   4rd arg rsi+4
+   0x0000000000401467 <+11>:	lea    0x14(%rsi),%rax                 ; rsi + 20 -> rax
+   0x000000000040146b <+15>:	mov    %rax,0x8(%rsp)                  ; rax -> (rsp + 8) rsi+20 8th arg
+   0x0000000000401470 <+20>:	lea    0x10(%rsi),%rax                 ; rsi + 16 -> rax
+   0x0000000000401474 <+24>:	mov    %rax,(%rsp)                     ; rax -> (rsp)     rsi+16 7th arg
+   0x0000000000401478 <+28>:	lea    0xc(%rsi),%r9                   ; rsi + 12 -> r9   6th arg rsi+12
+   0x000000000040147c <+32>:	lea    0x8(%rsi),%r8                   ; rsi + 8 -> r8    5th arg rsi+8
+   0x0000000000401480 <+36>:	mov    $0x4025c3,%esi                  ; 0x4025c3 -> esi  2nd arg "%d %d %d %d %d %d"
+   0x0000000000401485 <+41>:	mov    $0x0,%eax                       ; 0 -> eax         return value
+   0x000000000040148a <+46>:	call   0x400bf0 <__isoc99_sscanf@plt>  ; sscanf
+   0x000000000040148f <+51>:	cmp    $0x5,%eax                       ; eax <= 5?
+   0x0000000000401492 <+54>:	jg     0x401499 <read_six_numbers+61>  ; then
+   0x0000000000401494 <+56>:	call   0x40143a <explode_bomb>         ; boom
+   0x0000000000401499 <+61>:	add    $0x18,%rsp                      ; free stack
+   0x000000000040149d <+65>:	ret
+
+phase_2:
+   0x0000000000400efc <+0>:	    push   %rbp
+   0x0000000000400efd <+1>:	    push   %rbx
+   0x0000000000400efe <+2>:	    sub    $0x28,%rsp                  ; 40byte
+   0x0000000000400f02 <+6>:	    mov    %rsp,%rsi
+   0x0000000000400f05 <+9>:	    call   0x40145c <read_six_numbers> ; rsp(+4)rsp+20: x1 x2 x3 x4 x5 x6
+   0x0000000000400f0a <+14>:	cmpl   $0x1,(%rsp)
+   0x0000000000400f0e <+18>:	je     0x400f30 <phase_2+52>       ; x1 = 1
+   0x0000000000400f10 <+20>:	call   0x40143a <explode_bomb>
+   0x0000000000400f15 <+25>:	jmp    0x400f30 <phase_2+52>
+   0x0000000000400f17 <+27>:	mov    -0x4(%rbx),%eax             ; *(&x2-4) = x1 -> eax
+   0x0000000000400f1a <+30>:	add    %eax,%eax                   ; x1 * 2
+   0x0000000000400f1c <+32>:	cmp    %eax,(%rbx)                 ; x2 = x1 * 2 = 2
+   0x0000000000400f1e <+34>:	je     0x400f25 <phase_2+41>
+   0x0000000000400f20 <+36>:	call   0x40143a <explode_bomb>
+   0x0000000000400f25 <+41>:	add    $0x4,%rbx                   ; &x2+4 = &x3 -> rbx
+   0x0000000000400f29 <+45>:	cmp    %rbp,%rbx                   ; rbx <= &x6 + 4
+   0x0000000000400f2c <+48>:	jne    0x400f17 <phase_2+27>
+   0x0000000000400f2e <+50>:	jmp    0x400f3c <phase_2+64>
+   0x0000000000400f30 <+52>:	lea    0x4(%rsp),%rbx              ; &x2->rbx
+   0x0000000000400f35 <+57>:	lea    0x18(%rsp),%rbp             ; rsp+24 = &x6 + 4 -> rbp
+   0x0000000000400f3a <+62>:	jmp    0x400f17 <phase_2+27>
+   0x0000000000400f3c <+64>:	add    $0x28,%rsp
+   0x0000000000400f40 <+68>:	pop    %rbx
+   0x0000000000400f41 <+69>:	pop    %rbp
+   0x0000000000400f42 <+70>:	ret
+
+1 2 4 8 16 32

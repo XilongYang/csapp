@@ -1,0 +1,9 @@
+(gdb) i stack
+#0  0x0000000000401338 in strings_not_equal ()
+#1  0x0000000000400eee in phase_1 ()
+#2  0x0000000000400e3f in main (argc=<optimized out>, argv=<optimized out>) at bomb.c:74
+(gdb) x/s $rsi
+0x402400:	"Border relations with Canada have never been better."
+
+
+Border relations with Canada have never been better.
