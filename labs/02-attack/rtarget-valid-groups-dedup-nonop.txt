@@ -1,0 +1,751 @@
+# rtarget-dumped-code.s 有效组去重清单 (忽略 nop)
+# 口径: 按完整指令文本序列去重(忽略地址/字节列, 忽略 nop 指令, 保留立即数)
+# 原 213 种唯一组 -> 忽略 nop 后 164 种 (出现次数总和=6414)
+# 排序: 出现次数降序; 格式: #序号  x出现次数  (first @首次地址)
+
+#1  x349  (first @0x0)
+   0:	b8 01 00 00 00       	mov    $0x1,%eax
+   5:	c3                   	ret
+
+#2  x279  (first @0x117)
+ 117:	c7 07 48 89 e0 90    	movl   $0x90e08948,(%rdi)
+ 11d:	c3                   	ret
+
+#3  x265  (first @0x111)
+ 111:	b8 8d ce 20 d2       	mov    $0xd220ce8d,%eax
+ 116:	c3                   	ret
+
+#4  x262  (first @0x10a)
+ 10a:	8d 87 89 c2 60 d2    	lea    -0x2d9f3d77(%rdi),%eax
+ 110:	c3                   	ret
+
+#5  x259  (first @0x103)
+ 103:	c7 07 48 89 e0 c2    	movl   $0xc2e08948,(%rdi)
+ 109:	c3                   	ret
+
+#6  x249  (first @0xfd)
+  fd:	b8 88 ce 20 c0       	mov    $0xc020ce88,%eax
+ 102:	c3                   	ret
+
+#7  x246  (first @0xf6)
+  f6:	8d 87 89 c2 c7 3c    	lea    0x3cc7c289(%rdi),%eax
+  fc:	c3                   	ret
+
+#8  x240  (first @0xef)
+  ef:	8d 87 08 89 e0 90    	lea    -0x6f1f76f8(%rdi),%eax
+  f5:	c3                   	ret
+
+#9  x229  (first @0xe8)
+  e8:	c7 07 09 ce 08 c9    	movl   $0xc908ce09,(%rdi)
+  ee:	c3                   	ret
+
+#10  x225  (first @0xe1)
+  e1:	c7 07 81 c2 38 d2    	movl   $0xd238c281,(%rdi)
+  e7:	c3                   	ret
+
+#11  x217  (first @0xda)
+  da:	c7 07 89 d1 91 c3    	movl   $0xc391d189,(%rdi)
+  e0:	c3                   	ret
+
+#12  x212  (first @0xd4)
+  d4:	b8 89 d1 08 db       	mov    $0xdb08d189,%eax
+  d9:	c3                   	ret
+
+#13  x206  (first @0xcd)
+  cd:	8d 87 89 ce 92 c3    	lea    -0x3c6d3177(%rdi),%eax
+  d3:	c3                   	ret
+
+#14  x199  (first @0xc6)
+  c6:	c7 07 48 89 e0 91    	movl   $0x91e08948,(%rdi)
+  cc:	c3                   	ret
+
+#15  x187  (first @0xc0)
+  c0:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+  c5:	c3                   	ret
+
+#16  x184  (first @0xba)
+  ba:	b8 99 d1 08 d2       	mov    $0xd208d199,%eax
+  bf:	c3                   	ret
+
+#17  x178  (first @0xb3)
+  b3:	8d 87 48 89 e0 c7    	lea    -0x381f76b8(%rdi),%eax
+  b9:	c3                   	ret
+
+#18  x173  (first @0xac)
+  ac:	8d 87 89 c2 84 c0    	lea    -0x3f7b3d77(%rdi),%eax
+  b2:	c3                   	ret
+
+#19  x166  (first @0xa5)
+  a5:	8d 87 c8 89 e0 c3    	lea    -0x3c1f7638(%rdi),%eax
+  ab:	c3                   	ret
+
+#20  x156  (first @0x9f)
+  9f:	b8 89 d1 38 c9       	mov    $0xc938d189,%eax
+  a4:	c3                   	ret
+
+#21  x151  (first @0x98)
+  98:	c7 07 81 ce 08 db    	movl   $0xdb08ce81,(%rdi)
+  9e:	c3                   	ret
+
+#22  x142  (first @0x91)
+  91:	8d 87 89 ce 38 c0    	lea    -0x3fc73177(%rdi),%eax
+  97:	c3                   	ret
+
+#23  x136  (first @0x8a)
+  8a:	8d 87 89 c2 00 c9    	lea    -0x36ff3d77(%rdi),%eax
+  90:	c3                   	ret
+
+#24  x132  (first @0x84)
+  84:	b8 48 89 e0 c1       	mov    $0xc1e08948,%eax
+  89:	c3                   	ret
+
+#25  x126  (first @0x7d)
+  7d:	8d 87 89 ce 90 90    	lea    -0x6f6f3177(%rdi),%eax
+  83:	c3                   	ret
+
+#26  x118  (first @0x76)
+  76:	c7 07 88 c2 08 c9    	movl   $0xc908c288,(%rdi)
+  7c:	c3                   	ret
+
+#27  x105  (first @0x6f)
+  6f:	8d 87 41 48 89 e0    	lea    -0x1f76b7bf(%rdi),%eax
+  75:	c3                   	ret
+
+#28  x102  (first @0x68)
+  68:	c7 07 81 d1 84 c0    	movl   $0xc084d181,(%rdi)
+  6e:	c3                   	ret
+
+#29  x95  (first @0x62)
+  62:	b8 89 d1 48 c0       	mov    $0xc048d189,%eax
+  67:	c3                   	ret
+
+#30  x91  (first @0x5b)
+  5b:	8d 87 8d d1 20 db    	lea    -0x24df2e73(%rdi),%eax
+  61:	c3                   	ret
+
+#31  x82  (first @0x54)
+  54:	8d 87 89 ce 78 c9    	lea    -0x36873177(%rdi),%eax
+  5a:	c3                   	ret
+
+#32  x78  (first @0x4d)
+  4d:	c7 07 99 d1 90 90    	movl   $0x9090d199,(%rdi)
+  53:	c3                   	ret
+
+#33  x72  (first @0x47)
+  47:	b8 5c 89 c2 90       	mov    $0x90c2895c,%eax
+  4c:	c3                   	ret
+
+#34  x65  (first @0x42)
+  42:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax
+  46:	c3                   	ret
+
+#35  x60  (first @0x120)
+   0:	c3                   	ret
+
+#36  x55  (first @0x36)
+  36:	b8 29 58 90 c3       	mov    $0xc3905829,%eax
+  3b:	c3                   	ret
+
+#37  x43  (first @0x2f)
+  2f:	c7 07 48 89 c7 90    	movl   $0x90c78948,(%rdi)
+  35:	c3                   	ret
+
+#38  x41  (first @0x28)
+  28:	c7 07 63 48 8d c7    	movl   $0xc78d4863,(%rdi)
+  2e:	c3                   	ret
+
+#39  x29  (first @0x21)
+  21:	c7 07 54 c2 58 92    	movl   $0x9258c254,(%rdi)
+  27:	c3                   	ret
+
+#40  x27  (first @0x1a)
+  1a:	c7 07 48 89 c7 c7    	movl   $0xc7c78948,(%rdi)
+  20:	c3                   	ret
+
+#41  x18  (first @0x13)
+  13:	8d 87 51 73 58 90    	lea    -0x6fa78caf(%rdi),%eax
+  19:	c3                   	ret
+
+#42  x13  (first @0xc)
+   c:	8d 87 48 89 c7 c3    	lea    -0x3c3876b8(%rdi),%eax
+  12:	c3                   	ret
+
+#43  x6  (first @0xcc)
+   0:	c9                   	leave
+   1:	c3                   	ret
+
+#44  x6  (first @0xa)
+   a:	87 89 c2 60 d2 c3    	xchg   %ecx,-0x3c2d9f3e(%rcx)
+  10:	b8 8d ce 20 d2       	mov    $0xd220ce8d,%eax
+  15:	c3                   	ret
+
+#45  x5  (first @0x6)
+   6:	b8 fb 78 90 90       	mov    $0x909078fb,%eax
+   b:	c3                   	ret
+
+#46  x4  (first @0x33)
+   0:	89 e0                	mov    %esp,%eax
+   3:	c3                   	ret
+
+#47  x3  (first @0x124)
+   0:	01 00                	add    %eax,(%rax)
+   2:	00 00                	add    %al,(%rax)
+   4:	c3                   	ret
+
+#48  x2  (first @0x32)
+   0:	e0 90                	loopne 0xffffffffffffff92
+   2:	c3                   	ret
+
+#49  x2  (first @0x5a)
+   0:	91                   	xchg   %eax,%ecx
+   1:	c3                   	ret
+
+#50  x2  (first @0x89)
+   0:	08 db                	or     %bl,%bl
+   2:	c3                   	ret
+
+#51  x2  (first @0xab)
+   0:	08 c9                	or     %cl,%cl
+   2:	c3                   	ret
+
+#52  x2  (first @0xb9)
+   0:	84 c0                	test   %al,%al
+   2:	c3                   	ret
+
+#53  x2  (first @0xff)
+   0:	92                   	xchg   %eax,%edx
+   1:	c3                   	ret
+
+#54  x2  (first @0x10e)
+   0:	58                   	pop    %rax
+   2:	c3                   	ret
+
+#55  x2  (first @0x122)
+   0:	00 00                	add    %al,(%rax)
+   2:	c3                   	ret
+
+#56  x2  (first @0xc)
+   0:	48 89 e0             	mov    %rsp,%rax
+   4:	c3                   	ret
+
+#57  x2  (first @0xf3)
+   0:	89 c7                	mov    %eax,%edi
+   3:	c3                   	ret
+
+#58  x2  (first @0xf4)
+   0:	48 89 c7             	mov    %rax,%rdi
+   4:	c3                   	ret
+
+#59  x1  (first @0x3)
+   0:	00 c3                	add    %al,%bl
+   0:	c3                   	ret
+
+#60  x1  (first @0x5)
+   0:	00 00                	add    %al,(%rax)
+   2:	00 c3                	add    %al,%bl
+   0:	00 00                	add    %al,(%rax)
+   2:	c3                   	ret
+
+#61  x1  (first @0x10)
+   0:	d2 c3                	rol    %cl,%bl
+   2:	c7 07 48 89 e0 90    	movl   $0x90e08948,(%rdi)
+   8:	c3                   	ret
+
+#62  x1  (first @0x11)
+   0:	20 d2                	and    %dl,%dl
+   2:	c3                   	ret
+
+#63  x1  (first @0x16)
+   0:	d2 c3                	rol    %cl,%bl
+   2:	b8 8d ce 20 d2       	mov    $0xd220ce8d,%eax
+   7:	c3                   	ret
+
+#64  x1  (first @0x18)
+   0:	c2 60 d2             	ret    $0xd260
+
+#65  x1  (first @0x1d)
+   0:	c2 c3 8d             	ret    $0x8dc3
+
+#66  x1  (first @0x1e)
+   0:	e0 c2                	loopne 0xffffffffffffffc4
+   2:	c3                   	ret
+
+#67  x1  (first @0x1f)
+   0:	89 e0                	mov    %esp,%eax
+   2:	c2 c3 8d             	ret    $0x8dc3
+
+#68  x1  (first @0x20)
+   0:	48 89 e0             	mov    %rsp,%rax
+   3:	c2 c3 8d             	ret    $0x8dc3
+
+#69  x1  (first @0x25)
+   0:	20 c0                	and    %al,%al
+   2:	c3                   	ret
+
+#70  x1  (first @0x27)
+   0:	88 ce                	mov    %cl,%dh
+   2:	20 c0                	and    %al,%al
+   4:	c3                   	ret
+
+#71  x1  (first @0x2a)
+   0:	3c c3                	cmp    $0xc3,%al
+   2:	b8 88 ce 20 c0       	mov    $0xc020ce88,%eax
+   7:	c3                   	ret
+
+#72  x1  (first @0x2c)
+   0:	c2 c7 3c             	ret    $0x3cc7
+
+#73  x1  (first @0x2e)
+   0:	87 89 c2 c7 3c c3    	xchg   %ecx,-0x3cc3383e(%rcx)
+   6:	b8 88 ce 20 c0       	mov    $0xc020ce88,%eax
+   b:	c3                   	ret
+
+#74  x1  (first @0x34)
+   0:	08 89 e0 90 c3 8d    	or     %cl,-0x723c6f20(%rcx)
+   6:	87 89 c2 c7 3c c3    	xchg   %ecx,-0x3cc3383e(%rcx)
+   c:	b8 88 ce 20 c0       	mov    $0xc020ce88,%eax
+  11:	c3                   	ret
+
+#75  x1  (first @0x35)
+   0:	87 08                	xchg   %ecx,(%rax)
+   2:	89 e0                	mov    %esp,%eax
+   5:	c3                   	ret
+
+#76  x1  (first @0x3b)
+   0:	09 ce                	or     %ecx,%esi
+   2:	08 c9                	or     %cl,%cl
+   4:	c3                   	ret
+
+#77  x1  (first @0x3f)
+   0:	d2 c3                	rol    %cl,%bl
+   2:	c7 07 09 ce 08 c9    	movl   $0xc908ce09,(%rdi)
+   8:	c3                   	ret
+
+#78  x1  (first @0x40)
+   0:	38 d2                	cmp    %dl,%dl
+   2:	c3                   	ret
+
+#79  x1  (first @0x41)
+   0:	c2 38 d2             	ret    $0xd238
+
+#80  x1  (first @0x49)
+   0:	89 d1                	mov    %edx,%ecx
+   2:	91                   	xchg   %eax,%ecx
+   3:	c3                   	ret
+
+#81  x1  (first @0x4d)
+   0:	db c3                	fcmovnb %st(3),%st
+   2:	c7 07 89 d1 91 c3    	movl   $0xc391d189,(%rdi)
+   8:	c3                   	ret
+
+#82  x1  (first @0x4f)
+   0:	d1 08                	rorl   $1,(%rax)
+   2:	db c3                	fcmovnb %st(3),%st
+   4:	c7 07 89 d1 91 c3    	movl   $0xc391d189,(%rdi)
+   a:	c3                   	ret
+
+#83  x1  (first @0x50)
+   0:	89 d1                	mov    %edx,%ecx
+   2:	08 db                	or     %bl,%bl
+   4:	c3                   	ret
+
+#84  x1  (first @0x56)
+   0:	89 ce                	mov    %ecx,%esi
+   2:	92                   	xchg   %eax,%edx
+   3:	c3                   	ret
+
+#85  x1  (first @0x57)
+   0:	87 89 ce 92 c3 c3    	xchg   %ecx,-0x3c3c6d32(%rcx)
+   6:	b8 89 d1 08 db       	mov    $0xdb08d189,%eax
+   b:	c3                   	ret
+
+#86  x1  (first @0x5b)
+   0:	e0 91                	loopne 0xffffffffffffff93
+   2:	c3                   	ret
+
+#87  x1  (first @0x5c)
+   0:	89 e0                	mov    %esp,%eax
+   2:	91                   	xchg   %eax,%ecx
+   3:	c3                   	ret
+
+#88  x1  (first @0x5d)
+   0:	48 89 e0             	mov    %rsp,%rax
+   3:	91                   	xchg   %eax,%ecx
+   4:	c3                   	ret
+
+#89  x1  (first @0x63)
+   0:	c2 c4 c9             	ret    $0xc9c4
+
+#90  x1  (first @0x67)
+   0:	d2 c3                	rol    %cl,%bl
+   2:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+   7:	c3                   	ret
+
+#91  x1  (first @0x68)
+   0:	08 d2                	or     %dl,%dl
+   2:	c3                   	ret
+
+#92  x1  (first @0x69)
+   0:	d1 08                	rorl   $1,(%rax)
+   2:	d2 c3                	rol    %cl,%bl
+   4:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+   9:	c3                   	ret
+
+#93  x1  (first @0x6a)
+   0:	99                   	cltd
+   1:	d1 08                	rorl   $1,(%rax)
+   3:	d2 c3                	rol    %cl,%bl
+   5:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+   a:	c3                   	ret
+
+#94  x1  (first @0x6d)
+   0:	c7 c3 b8 99 d1 08    	mov    $0x8d199b8,%ebx
+   6:	d2 c3                	rol    %cl,%bl
+   8:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+   d:	c3                   	ret
+
+#95  x1  (first @0x6e)
+   0:	e0 c7                	loopne 0xffffffffffffffc9
+   2:	c3                   	ret
+
+#96  x1  (first @0x6f)
+   0:	89 e0                	mov    %esp,%eax
+   2:	c7 c3 b8 99 d1 08    	mov    $0x8d199b8,%ebx
+   8:	d2 c3                	rol    %cl,%bl
+   a:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+   f:	c3                   	ret
+
+#97  x1  (first @0x70)
+   0:	48 89 e0             	mov    %rsp,%rax
+   3:	c7 c3 b8 99 d1 08    	mov    $0x8d199b8,%ebx
+   9:	d2 c3                	rol    %cl,%bl
+   b:	b8 89 c2 c4 c9       	mov    $0xc9c4c289,%eax
+  10:	c3                   	ret
+
+#98  x1  (first @0x71)
+   0:	87 48 89             	xchg   %ecx,-0x77(%rax)
+   3:	e0 c7                	loopne 0xffffffffffffffcc
+   5:	c3                   	ret
+
+#99  x1  (first @0x74)
+   0:	c0 c3 8d             	rol    $0x8d,%bl
+   3:	87 48 89             	xchg   %ecx,-0x77(%rax)
+   6:	e0 c7                	loopne 0xffffffffffffffcf
+   8:	c3                   	ret
+
+#100  x1  (first @0x76)
+   0:	c2 84 c0             	ret    $0xc084
+
+#101  x1  (first @0x77)
+   0:	89 c2                	mov    %eax,%edx
+   2:	84 c0                	test   %al,%al
+   4:	c3                   	ret
+
+#102  x1  (first @0x78)
+   0:	87 89 c2 84 c0 c3    	xchg   %ecx,-0x3c3f7b3e(%rcx)
+   6:	8d 87 48 89 e0 c7    	lea    -0x381f76b8(%rdi),%eax
+   c:	c3                   	ret
+
+#103  x1  (first @0x7c)
+   0:	e0 c3                	loopne 0xffffffffffffffc5
+   2:	c3                   	ret
+
+#104  x1  (first @0x7e)
+   0:	c8 89 e0 c3          	enter  $0xe089,$0xc3
+   4:	c3                   	ret
+
+#105  x1  (first @0x7f)
+   0:	87 c8                	xchg   %ecx,%eax
+   2:	89 e0                	mov    %esp,%eax
+   4:	c3                   	ret
+
+#106  x1  (first @0x83)
+   0:	38 c9                	cmp    %cl,%cl
+   2:	c3                   	ret
+
+#107  x1  (first @0x84)
+   0:	d1 38                	sarl   $1,(%rax)
+   2:	c9                   	leave
+   3:	c3                   	ret
+
+#108  x1  (first @0x85)
+   0:	89 d1                	mov    %edx,%ecx
+   2:	38 c9                	cmp    %cl,%cl
+   4:	c3                   	ret
+
+#109  x1  (first @0x88)
+   0:	db c3                	fcmovnb %st(3),%st
+   2:	b8 89 d1 38 c9       	mov    $0xc938d189,%eax
+   7:	c3                   	ret
+
+#110  x1  (first @0x8b)
+   0:	81 ce 08 db c3 b8    	or     $0xb8c3db08,%esi
+   6:	89 d1                	mov    %edx,%ecx
+   8:	38 c9                	cmp    %cl,%cl
+   a:	c3                   	ret
+
+#111  x1  (first @0x90)
+   0:	38 c0                	cmp    %al,%al
+   2:	c3                   	ret
+
+#112  x1  (first @0x92)
+   0:	89 ce                	mov    %ecx,%esi
+   2:	38 c0                	cmp    %al,%al
+   4:	c3                   	ret
+
+#113  x1  (first @0x93)
+   0:	87 89 ce 38 c0 c3    	xchg   %ecx,-0x3c3fc732(%rcx)
+   6:	c7 07 81 ce 08 db    	movl   $0xdb08ce81,(%rdi)
+   c:	c3                   	ret
+
+#114  x1  (first @0x97)
+   0:	00 c9                	add    %cl,%cl
+   2:	c3                   	ret
+
+#115  x1  (first @0x98)
+   0:	c2 00 c9             	ret    $0xc900
+
+#116  x1  (first @0x99)
+   0:	89 c2                	mov    %eax,%edx
+   2:	00 c9                	add    %cl,%cl
+   4:	c3                   	ret
+
+#117  x1  (first @0x9a)
+   0:	87 89 c2 00 c9 c3    	xchg   %ecx,-0x3c36ff3e(%rcx)
+   6:	8d 87 89 ce 38 c0    	lea    -0x3fc73177(%rdi),%eax
+   c:	c3                   	ret
+
+#118  x1  (first @0x9d)
+   0:	c1 c3 8d             	rol    $0x8d,%ebx
+   3:	87 89 c2 00 c9 c3    	xchg   %ecx,-0x3c36ff3e(%rcx)
+   9:	8d 87 89 ce 38 c0    	lea    -0x3fc73177(%rdi),%eax
+   f:	c3                   	ret
+
+#119  x1  (first @0x9e)
+   0:	e0 c1                	loopne 0xffffffffffffffc3
+   2:	c3                   	ret
+
+#120  x1  (first @0x9f)
+   0:	89 e0                	mov    %esp,%eax
+   2:	c1 c3 8d             	rol    $0x8d,%ebx
+   5:	87 89 c2 00 c9 c3    	xchg   %ecx,-0x3c36ff3e(%rcx)
+   b:	8d 87 89 ce 38 c0    	lea    -0x3fc73177(%rdi),%eax
+  11:	c3                   	ret
+
+#121  x1  (first @0xa0)
+   0:	48 89 e0             	mov    %rsp,%rax
+   3:	c1 c3 8d             	rol    $0x8d,%ebx
+   6:	87 89 c2 00 c9 c3    	xchg   %ecx,-0x3c36ff3e(%rcx)
+   c:	8d 87 89 ce 38 c0    	lea    -0x3fc73177(%rdi),%eax
+  12:	c3                   	ret
+
+#122  x1  (first @0xa6)
+   0:	89 ce                	mov    %ecx,%esi
+   4:	c3                   	ret
+
+#123  x1  (first @0xa7)
+   0:	87 89 ce 90 90 c3    	xchg   %ecx,-0x3c6f6f32(%rcx)
+   6:	b8 48 89 e0 c1       	mov    $0xc1e08948,%eax
+   b:	c3                   	ret
+
+#124  x1  (first @0xac)
+   0:	c2 08 c9             	ret    $0xc908
+
+#125  x1  (first @0xad)
+   0:	88 c2                	mov    %al,%dl
+   2:	08 c9                	or     %cl,%cl
+   4:	c3                   	ret
+
+#126  x1  (first @0xb1)
+   0:	e0 c3                	loopne 0xffffffffffffffc5
+   2:	c7 07 88 c2 08 c9    	movl   $0xc908c288,(%rdi)
+   8:	c3                   	ret
+
+#127  x1  (first @0xb5)
+   0:	87 41 48             	xchg   %eax,0x48(%rcx)
+   3:	89 e0                	mov    %esp,%eax
+   5:	c3                   	ret
+
+#128  x1  (first @0xb8)
+   0:	c0 c3 8d             	rol    $0x8d,%bl
+   3:	87 41 48             	xchg   %eax,0x48(%rcx)
+   6:	89 e0                	mov    %esp,%eax
+   8:	c3                   	ret
+
+#129  x1  (first @0xba)
+   0:	d1 84 c0 c3 8d 87 41 	roll   $1,0x41878dc3(%rax,%rax,8)
+   7:	48 89 e0             	mov    %rsp,%rax
+   a:	c3                   	ret
+
+#130  x1  (first @0xbb)
+   0:	81 d1 84 c0 c3 8d    	adc    $0x8dc3c084,%ecx
+   6:	87 41 48             	xchg   %eax,0x48(%rcx)
+   9:	89 e0                	mov    %esp,%eax
+   b:	c3                   	ret
+
+#131  x1  (first @0xc1)
+   0:	d1 48 c0             	rorl   $1,-0x40(%rax)
+   3:	c3                   	ret
+
+#132  x1  (first @0xc5)
+   0:	db c3                	fcmovnb %st(3),%st
+   2:	b8 89 d1 48 c0       	mov    $0xc048d189,%eax
+   7:	c3                   	ret
+
+#133  x1  (first @0xc6)
+   0:	20 db                	and    %bl,%bl
+   2:	c3                   	ret
+
+#134  x1  (first @0xc7)
+   0:	d1 20                	shll   $1,(%rax)
+   2:	db c3                	fcmovnb %st(3),%st
+   4:	b8 89 d1 48 c0       	mov    $0xc048d189,%eax
+   9:	c3                   	ret
+
+#135  x1  (first @0xc9)
+   0:	87 8d d1 20 db c3    	xchg   %ecx,-0x3c24df2f(%rbp)
+   6:	b8 89 d1 48 c0       	mov    $0xc048d189,%eax
+   b:	c3                   	ret
+
+#136  x1  (first @0xcd)
+   0:	78 c9                	js     0xffffffffffffffcb
+   2:	c3                   	ret
+
+#137  x1  (first @0xcf)
+   0:	89 ce                	mov    %ecx,%esi
+   2:	78 c9                	js     0xffffffffffffffcd
+   4:	c3                   	ret
+
+#138  x1  (first @0xd0)
+   0:	87 89 ce 78 c9 c3    	xchg   %ecx,-0x3c368732(%rcx)
+   6:	8d 87 8d d1 20 db    	lea    -0x24df2e73(%rdi),%eax
+   c:	c3                   	ret
+
+#139  x1  (first @0xd5)
+   0:	d1 90 90 c3 8d 87    	rcll   $1,-0x78723c70(%rax)
+   6:	89 ce                	mov    %ecx,%esi
+   8:	78 c9                	js     0xffffffffffffffd3
+   a:	c3                   	ret
+
+#140  x1  (first @0xd6)
+   0:	99                   	cltd
+   1:	d1 90 90 c3 8d 87    	rcll   $1,-0x78723c70(%rax)
+   7:	89 ce                	mov    %ecx,%esi
+   9:	78 c9                	js     0xffffffffffffffd4
+   b:	c3                   	ret
+
+#141  x1  (first @0xdb)
+   0:	c2 90 c3             	ret    $0xc390
+
+#142  x1  (first @0xdc)
+   0:	89 c2                	mov    %eax,%edx
+   3:	c3                   	ret
+
+#143  x1  (first @0xdd)
+   0:	5c                   	pop    %rsp
+   1:	89 c2                	mov    %eax,%edx
+   4:	c3                   	ret
+
+#144  x1  (first @0xe1)
+   0:	04 37                	add    $0x37,%al
+   2:	c3                   	ret
+
+#145  x1  (first @0xe2)
+   0:	8d 04 37             	lea    (%rdi,%rsi,1),%eax
+   3:	c3                   	ret
+
+#146  x1  (first @0xe5)
+   0:	00 c3                	add    %al,%bl
+   2:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax
+   6:	c3                   	ret
+
+#147  x1  (first @0xe7)
+   0:	00 00                	add    %al,(%rax)
+   2:	00 c3                	add    %al,%bl
+   4:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax
+   8:	c3                   	ret
+
+#148  x1  (first @0xee)
+   0:	29 58 90             	sub    %ebx,-0x70(%rax)
+   3:	c3                   	ret
+
+#149  x1  (first @0x100)
+   0:	58                   	pop    %rax
+   1:	92                   	xchg   %eax,%edx
+   2:	c3                   	ret
+
+#150  x1  (first @0x101)
+   0:	c2 58 92             	ret    $0x9258
+
+#151  x1  (first @0x102)
+   0:	54                   	push   %rsp
+   1:	c2 58 92             	ret    $0x9258
+
+#152  x1  (first @0x106)
+   0:	c7 c3 c7 07 54 c2    	mov    $0xc25407c7,%ebx
+   6:	58                   	pop    %rax
+   7:	92                   	xchg   %eax,%edx
+   8:	c3                   	ret
+
+#153  x1  (first @0x107)
+   0:	c7 c7 c3 c7 07 54    	mov    $0x5407c7c3,%edi
+   6:	c2 58 92             	ret    $0x9258
+
+#154  x1  (first @0x108)
+   0:	89 c7                	mov    %eax,%edi
+   2:	c7 c3 c7 07 54 c2    	mov    $0xc25407c7,%ebx
+   8:	58                   	pop    %rax
+   9:	92                   	xchg   %eax,%edx
+   a:	c3                   	ret
+
+#155  x1  (first @0x109)
+   0:	48 89 c7             	mov    %rax,%rdi
+   3:	c7 c3 c7 07 54 c2    	mov    $0xc25407c7,%ebx
+   9:	58                   	pop    %rax
+   a:	92                   	xchg   %eax,%edx
+   b:	c3                   	ret
+
+#156  x1  (first @0x10f)
+   0:	73 58                	jae    0x5a
+   3:	c3                   	ret
+
+#157  x1  (first @0x110)
+   0:	51                   	push   %rcx
+   1:	73 58                	jae    0x5b
+   4:	c3                   	ret
+
+#158  x1  (first @0x111)
+   0:	87 51 73             	xchg   %edx,0x73(%rcx)
+   3:	58                   	pop    %rax
+   5:	c3                   	ret
+
+#159  x1  (first @0x115)
+   0:	c7 c3 c3 8d 87 51    	mov    $0x51878dc3,%ebx
+   6:	73 58                	jae    0x60
+   9:	c3                   	ret
+
+#160  x1  (first @0x118)
+   0:	87 48 89             	xchg   %ecx,-0x77(%rax)
+   3:	c7 c3 c3 8d 87 51    	mov    $0x51878dc3,%ebx
+   9:	73 58                	jae    0x63
+   c:	c3                   	ret
+
+#161  x1  (first @0x11d)
+   0:	78 90                	js     0xffffffffffffff92
+   3:	c3                   	ret
+
+#162  x1  (first @0x11e)
+   0:	fb                   	sti
+   1:	78 90                	js     0xffffffffffffff93
+   4:	c3                   	ret
+
+#163  x1  (first @0x121)
+   0:	00 c3                	add    %al,%bl
+   2:	b8 fb 78 90 90       	mov    $0x909078fb,%eax
+   7:	c3                   	ret
+
+#164  x1  (first @0x123)
+   0:	00 00                	add    %al,(%rax)
+   2:	00 c3                	add    %al,%bl
+   4:	b8 fb 78 90 90       	mov    $0x909078fb,%eax
+   9:	c3                   	ret
