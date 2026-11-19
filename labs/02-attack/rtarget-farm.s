@@ -68,6 +68,7 @@
   4019fc:	c7 07 81 d1 84 c0    	movl   $0xc084d181,(%rdi)
   401a02:	c3                   	ret
 
+# mov sp -> ax: 401a06
 0000000000401a03 <addval_190>:
   401a03:	8d 87 41 48 89 e0    	lea    -0x1f76b7bf(%rdi),%eax
   401a09:	c3                   	ret
